@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="statusPagamentoModule">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cadastro de Lojas</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+
+</head>
+
+<body ng-controller="statusPagamentoControl">
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+
+    <script src="js/StatusPagamentoControl.js"></script>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Lojas</h3>
+        </div>
+        <div class="panel-body">
+            <div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#cadastro" aria-controls="cadastro" role="tab" data-toggle="tab">Cadastro</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="cadastro">
+                        <form>
+                            <div class="form-group">
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <div class="form-group">
+                                        <label for="loja.codigo">Código</label>
+                                        <input type="name" class="form-control" ng-model="loja.codigo" id="codigoLoja">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label for="loja.nome">Nome da Loja</label>
+                                        <input type="name" class="form-control" ng-model="loja.nome" placeholder="Nome da Loja">
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                        <label for="loja.categoria">Categoria</label>
+                                        <br>
+                                        <select class="form-control" placeholder="Grupo" ng-model="loja.categoria">
+                                            <option value="Construcao">Construção</option>
+                                            <option value="Pintura">Pintura</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label for="loja.endereco">Endereço</label>
+                                        <input type="name" class="form-control" ng-model="loja.endereco" placeholder="Endereço">
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <div class="form-group">
+                                        <label for="loja.telefone">Telefone</label>
+                                        <input type="name" class="form-control" ng-model="loja.telefone" placeholder="Telefone">
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <div class="form-group">
+                                        <label for="loja.celular">Celular</label>
+                                        <input type="name" class="form-control" ng-model="loja.celular" placeholder="Celular">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label for="loja.email">Email</label>
+                                        <input type="name" class="form-control" ng-model="loja.email" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                        <label for="loja.responsavel">Responsável</label>
+                                        <input type="name" class="form-control" ng-model="loja.responsavel" placeholder="Responsável">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="button" ng-click="salvar()">Salvar</button>
+                                <button class="btn btn-primary" type="button" ng-click="excluir()">Remover</button>
+                                <button class="btn btn-primary" type="button" ng-click="novo()">Limpar</button>
+                                <button class="btn btn-primary" type="button" id="alterar" ng-click="pesquisar()">Atualizar Tabela</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div role="tabpanel" class="tab-pane" id="dados">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Código</th>
+                            <th>Nome da Loja</th>
+                            <th>Categoria</th>
+                            <th>Telefone</th>
+                            <th>Responsável</th>
+                        </tr>
+                        <tr ng-repeat="loja in lojas" ng-click="seleciona(loja)">
+                            <td>{{loja.codigo}}</td>
+                            <td>{{loja.nome}}</td>
+                            <td>{{loja.categoria}}</td>
+                            <td>{{loja.telefone}}</td>
+                            <td>{{loja.responsavel}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

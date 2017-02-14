@@ -1,0 +1,109 @@
+<html ng-app="crudTecsoft">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cadastro de Preços</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+</head>
+
+<body>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+
+    <script src="js/StatusPagamentoControl.js"></script>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Preços</h3>
+        </div>
+        <div class="panel-body">
+            <div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#cadastro" aria-controls="cadastro" role="tab" data-toggle="tab">Cadastro</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="cadastro">
+                        <form>
+                            <div class="form-group">
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label for="preco.nomeLoja">Nome da Loja</label>
+                                        <input type="name" class="form-control" ng-model="preco.nomeLoja" placeholder="Nome da Loja">
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div class="form-group">
+                                        <label for="preco.codigoLoja">Código</label>
+                                        <input type="name" class="form-control" ng-model="preco.codigoLoja" id="codigoLoja" placeholder="Cod Loja">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label for="preco.descricaoMaterial">Descrição do Material</label>
+                                        <input type="name" class="form-control" ng-model="preco.descricaoMaterial" placeholder="Descrição do Material">
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div class="form-group">
+                                        <label for="preco.codigoMaterial">Código</label>
+                                        <input type="name" class="form-control" ng-model="preco.codigoMaterial" id="codigoMaterial" placeholder="Cod Produto">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <div class="form-group">
+                                        <label for="preco.valorMaterial">Preço</label>
+                                        <input type="name" class="form-control" ng-model="preco.valorMaterial" placeholder="Preço">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="button" ng-click="salvar()">Salvar</button>
+                                <button class="btn btn-primary" type="button" ng-click="excluir()">Remover</button>
+                                <button class="btn btn-primary" type="button" ng-click="novo()">Limpar</button>
+                                <button class="btn btn-primary" type="button" id="alterar" ng-click="pesquisar()">Atualizar Tabela</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div role="tabpanel" class="tab-pane" id="dados">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Loja</th>
+                            <th>Código Material</th>
+                            <th>Material</th>
+                            <th>Preço</th>
+                        </tr>
+                        <tr ng-repeat="usuario in usuarios" ng-click="seleciona(usuario)">
+                            <td>{{preco.nomeLoja}}</td>
+                            <td>{{preco.codigoMaterial}}</td>
+                            <td>{{preco.descricaoMaterial}}</td>
+                            <td>{{preco.valorMaterial}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

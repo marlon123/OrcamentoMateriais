@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="materiaisModule">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Cadastro de Materiais</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <link href="css/jasny-bootstrap.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body ng-controller="materiaisControl">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.js"></script>
+    <script src="js/jasny-bootstrap.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/materiaisControl.js"></script>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Materiais</h3>
+        </div>
+        <div class="panel-body">
+            <div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#cadastro" aria-controls="cadastro" role="tab" data-toggle="tab">Cadastro</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="cadastro">
+                        <form>
+                            <div class="form-group">
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <div class="form-group">
+                                        <label for="material.codigo">Código</label>
+                                        <input type="name" class="form-control" ng-model="material.codigo" id="codigo">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label for="material.descricao">Descrição</label>
+                                        <input type="name" class="form-control" ng-model="material.descricao" placeholder="Descrição">
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                        <label for="material.grupo">Grupo</label>
+                                        <br>
+                                        <select class="form-control" placeholder="Grupo" ng-model="material.grupo">
+                                            <option value="Areia">Areia</option>
+                                            <option value="Pedra">Pedra</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                        <label for="material.subgrupo">SubGrupo</label>
+                                        <br>
+                                        <select class="form-control" placeholder="SubGrupo" ng-model="material.subgrupo">
+                                            <option value="Grossa">Grossa</option>
+                                            <option value="Fina">Fina</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                        <label for="material.marca">Marca</label>
+                                        <input type="name" class="form-control" ng-model="material.marca" placeholder="Marca">
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                        <label for="material.cor">Cor</label>
+                                        <input type="name" class="form-control" ng-model="material.cor" placeholder="Cor">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                        <label for="material.unidade">Unidade</label>
+                                        <input type="name" class="form-control" ng-model="material.unidade" placeholder="Unidade">
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                        <label for="material.dimensao">Dimensão</label>
+                                        <input type="name" class="form-control" ng-model="material.dimensao" placeholder="Dimensão">
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                        <label for="material.detalhes">Detalhes</label>
+                                        <input type="name" class="form-control" ng-model="material.detalhes" placeholder="Detalhes">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="button" ng-click="salvar()">Salvar</button>
+                                <button class="btn btn-primary" type="button" ng-click="excluir()">Remover</button>
+                                <button class="btn btn-primary" type="button" ng-click="novo()">Limpar</button>
+                                <button class="btn btn-primary" type="button" id="alterar" ng-click="pesquisar()">Atualizar Tabela</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div role="tabpanel" class="tab-pane" id="dados">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Código</th>
+                            <th>Descrição</th>
+                            <th>Grupo</th>
+                            <th>Marca</th>
+                            <th>Cor</th>
+                            <th>Detalhes</th>
+                        </tr>
+                        <tr ng-repeat="material in materiais" ng-click="seleciona(material)">
+                            <td>{{material.codigo}}</td>
+                            <td>{{material.descricao}}</td>
+                            <td>{{material.grupo}}</td>
+                            <td>{{material.marca}}</td>
+                            <td>{{material.cor}}</td>
+                            <td>{{material.detalhes}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
